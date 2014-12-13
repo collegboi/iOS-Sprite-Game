@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B26E49A21A3C9D4D0064105C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49A11A3C9D4D0064105C /* AppDelegate.swift */; };
+		B26E49A41A3C9D4D0064105C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B26E49A31A3C9D4D0064105C /* GameScene.sks */; };
+		B26E49A61A3C9D4D0064105C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49A51A3C9D4D0064105C /* GameScene.swift */; };
+		B26E49A81A3C9D4D0064105C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49A71A3C9D4D0064105C /* GameViewController.swift */; };
+		B26E49AB1A3C9D4D0064105C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26E49A91A3C9D4D0064105C /* Main.storyboard */; };
+		B26E49B01A3C9D4D0064105C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B26E49AE1A3C9D4D0064105C /* LaunchScreen.xib */; };
+		B26E49BC1A3C9D4D0064105C /* Minnion_MazeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49BB1A3C9D4D0064105C /* Minnion_MazeTests.swift */; };
+		B26E49C61A3C9EBF0064105C /* TileMapLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49C51A3C9EBF0064105C /* TileMapLayer.swift */; };
+		B26E49D41A3CAD350064105C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49D31A3CAD350064105C /* Player.swift */; };
+		B26E49D51A3CAD350064105C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49D31A3CAD350064105C /* Player.swift */; };
+		B26E49D91A3CB0340064105C /* characters.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B26E49D71A3CB0340064105C /* characters.atlas */; };
+		B26E49DA1A3CB0340064105C /* characters.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B26E49D71A3CB0340064105C /* characters.atlas */; };
+		B26E49DB1A3CB0340064105C /* scenery.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B26E49D81A3CB0340064105C /* scenery.atlas */; };
+		B26E49DC1A3CB0340064105C /* scenery.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B26E49D81A3CB0340064105C /* scenery.atlas */; };
+		B26E49EA1A3CB2EE0064105C /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49DE1A3CB2EE0064105C /* CGFloat+Extensions.swift */; };
+		B26E49EB1A3CB2EE0064105C /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49DE1A3CB2EE0064105C /* CGFloat+Extensions.swift */; };
+		B26E49EC1A3CB2EE0064105C /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49DF1A3CB2EE0064105C /* CGPoint+Extensions.swift */; };
+		B26E49ED1A3CB2EE0064105C /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49DF1A3CB2EE0064105C /* CGPoint+Extensions.swift */; };
+		B26E49EE1A3CB2EE0064105C /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E01A3CB2EE0064105C /* CGVector+Extensions.swift */; };
+		B26E49EF1A3CB2EE0064105C /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E01A3CB2EE0064105C /* CGVector+Extensions.swift */; };
+		B26E49F01A3CB2EE0064105C /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E11A3CB2EE0064105C /* Int+Extensions.swift */; };
+		B26E49F11A3CB2EE0064105C /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E11A3CB2EE0064105C /* Int+Extensions.swift */; };
+		B26E49F21A3CB2EE0064105C /* SKAction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E21A3CB2EE0064105C /* SKAction+Extensions.swift */; };
+		B26E49F31A3CB2EE0064105C /* SKAction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E21A3CB2EE0064105C /* SKAction+Extensions.swift */; };
+		B26E49F41A3CB2EE0064105C /* SKAction+SpecialEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E31A3CB2EE0064105C /* SKAction+SpecialEffects.swift */; };
+		B26E49F51A3CB2EE0064105C /* SKAction+SpecialEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E31A3CB2EE0064105C /* SKAction+SpecialEffects.swift */; };
+		B26E49F61A3CB2EE0064105C /* SKColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E41A3CB2EE0064105C /* SKColor+Extensions.swift */; };
+		B26E49F71A3CB2EE0064105C /* SKColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E41A3CB2EE0064105C /* SKColor+Extensions.swift */; };
+		B26E49F81A3CB2EE0064105C /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E51A3CB2EE0064105C /* SKNode+Extensions.swift */; };
+		B26E49F91A3CB2EE0064105C /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E51A3CB2EE0064105C /* SKNode+Extensions.swift */; };
+		B26E49FA1A3CB2EE0064105C /* SKTAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E61A3CB2EE0064105C /* SKTAudio.swift */; };
+		B26E49FB1A3CB2EE0064105C /* SKTAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E61A3CB2EE0064105C /* SKTAudio.swift */; };
+		B26E49FC1A3CB2EE0064105C /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E71A3CB2EE0064105C /* SKTEffects.swift */; };
+		B26E49FD1A3CB2EE0064105C /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E71A3CB2EE0064105C /* SKTEffects.swift */; };
+		B26E49FE1A3CB2EE0064105C /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E81A3CB2EE0064105C /* SKTTimingFunctions.swift */; };
+		B26E49FF1A3CB2EE0064105C /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E81A3CB2EE0064105C /* SKTTimingFunctions.swift */; };
+		B26E4A001A3CB2EE0064105C /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E91A3CB2EE0064105C /* Vector3.swift */; };
+		B26E4A011A3CB2EE0064105C /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49E91A3CB2EE0064105C /* Vector3.swift */; };
+		B26E4A031A3CB5080064105C /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E4A021A3CB5080064105C /* Types.swift */; };
+		B26E4A041A3CB5080064105C /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E4A021A3CB5080064105C /* Types.swift */; };
+		B26E4A101A3CD3420064105C /* AnalogControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E4A0F1A3CD3420064105C /* AnalogControl.swift */; };
+		B26E4A111A3CD3420064105C /* AnalogControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E4A0F1A3CD3420064105C /* AnalogControl.swift */; };
+		B26E4A141A3CD4BE0064105C /* base@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B26E4A121A3CD4BE0064105C /* base@2x.png */; };
+		B26E4A151A3CD4BE0064105C /* base@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B26E4A121A3CD4BE0064105C /* base@2x.png */; };
+		B26E4A161A3CD4BE0064105C /* knob@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B26E4A131A3CD4BE0064105C /* knob@2x.png */; };
+		B26E4A171A3CD4BE0064105C /* knob@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B26E4A131A3CD4BE0064105C /* knob@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B26E49B61A3C9D4D0064105C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B26E49941A3C9D4D0064105C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B26E499B1A3C9D4D0064105C;
+			remoteInfo = "Minnion Maze";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B26E499C1A3C9D4D0064105C /* Minnion Maze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Minnion Maze.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B26E49A01A3C9D4D0064105C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B26E49A11A3C9D4D0064105C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B26E49A31A3C9D4D0064105C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		B26E49A51A3C9D4D0064105C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		B26E49A71A3C9D4D0064105C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		B26E49AA1A3C9D4D0064105C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B26E49AF1A3C9D4D0064105C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		B26E49B51A3C9D4D0064105C /* Minnion MazeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Minnion MazeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B26E49BA1A3C9D4D0064105C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B26E49BB1A3C9D4D0064105C /* Minnion_MazeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Minnion_MazeTests.swift; sourceTree = "<group>"; };
+		B26E49C51A3C9EBF0064105C /* TileMapLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileMapLayer.swift; sourceTree = "<group>"; };
+		B26E49D31A3CAD350064105C /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		B26E49D71A3CB0340064105C /* characters.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = characters.atlas; path = ../characters.atlas; sourceTree = "<group>"; };
+		B26E49D81A3CB0340064105C /* scenery.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = scenery.atlas; path = ../scenery.atlas; sourceTree = "<group>"; };
+		B26E49DE1A3CB2EE0064105C /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
+		B26E49DF1A3CB2EE0064105C /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
+		B26E49E01A3CB2EE0064105C /* CGVector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
+		B26E49E11A3CB2EE0064105C /* Int+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		B26E49E21A3CB2EE0064105C /* SKAction+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKAction+Extensions.swift"; sourceTree = "<group>"; };
+		B26E49E31A3CB2EE0064105C /* SKAction+SpecialEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKAction+SpecialEffects.swift"; sourceTree = "<group>"; };
+		B26E49E41A3CB2EE0064105C /* SKColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKColor+Extensions.swift"; sourceTree = "<group>"; };
+		B26E49E51A3CB2EE0064105C /* SKNode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKNode+Extensions.swift"; sourceTree = "<group>"; };
+		B26E49E61A3CB2EE0064105C /* SKTAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTAudio.swift; sourceTree = "<group>"; };
+		B26E49E71A3CB2EE0064105C /* SKTEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTEffects.swift; sourceTree = "<group>"; };
+		B26E49E81A3CB2EE0064105C /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
+		B26E49E91A3CB2EE0064105C /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
+		B26E4A021A3CB5080064105C /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		B26E4A0F1A3CD3420064105C /* AnalogControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogControl.swift; sourceTree = "<group>"; };
+		B26E4A121A3CD4BE0064105C /* base@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "base@2x.png"; sourceTree = "<group>"; };
+		B26E4A131A3CD4BE0064105C /* knob@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knob@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B26E49991A3C9D4D0064105C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B26E49B21A3C9D4D0064105C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B26E49931A3C9D4D0064105C = {
+			isa = PBXGroup;
+			children = (
+				B26E49B81A3C9D4D0064105C /* Minnion MazeTests */,
+				B26E499D1A3C9D4D0064105C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B26E499D1A3C9D4D0064105C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B26E499C1A3C9D4D0064105C /* Minnion Maze.app */,
+				B26E49B51A3C9D4D0064105C /* Minnion MazeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B26E499E1A3C9D4D0064105C /* Minnion Maze */ = {
+			isa = PBXGroup;
+			children = (
+				B26E49DD1A3CB2EE0064105C /* SKTUtils */,
+				B26E49D61A3CAF680064105C /* Images */,
+				B26E49D31A3CAD350064105C /* Player.swift */,
+				B26E4A021A3CB5080064105C /* Types.swift */,
+				B26E49C51A3C9EBF0064105C /* TileMapLayer.swift */,
+				B26E49A11A3C9D4D0064105C /* AppDelegate.swift */,
+				B26E49A31A3C9D4D0064105C /* GameScene.sks */,
+				B26E49A51A3C9D4D0064105C /* GameScene.swift */,
+				B26E4A0F1A3CD3420064105C /* AnalogControl.swift */,
+				B26E49A71A3C9D4D0064105C /* GameViewController.swift */,
+				B26E49A91A3C9D4D0064105C /* Main.storyboard */,
+				B26E49AE1A3C9D4D0064105C /* LaunchScreen.xib */,
+				B26E499F1A3C9D4D0064105C /* Supporting Files */,
+			);
+			name = "Minnion Maze";
+			path = "../Minnion Maze";
+			sourceTree = "<group>";
+		};
+		B26E499F1A3C9D4D0064105C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B26E49A01A3C9D4D0064105C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B26E49B81A3C9D4D0064105C /* Minnion MazeTests */ = {
+			isa = PBXGroup;
+			children = (
+				B26E499E1A3C9D4D0064105C /* Minnion Maze */,
+				B26E49BB1A3C9D4D0064105C /* Minnion_MazeTests.swift */,
+				B26E49B91A3C9D4D0064105C /* Supporting Files */,
+			);
+			path = "Minnion MazeTests";
+			sourceTree = "<group>";
+		};
+		B26E49B91A3C9D4D0064105C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B26E49BA1A3C9D4D0064105C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B26E49D61A3CAF680064105C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B26E4A121A3CD4BE0064105C /* base@2x.png */,
+				B26E4A131A3CD4BE0064105C /* knob@2x.png */,
+				B26E49D71A3CB0340064105C /* characters.atlas */,
+				B26E49D81A3CB0340064105C /* scenery.atlas */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		B26E49DD1A3CB2EE0064105C /* SKTUtils */ = {
+			isa = PBXGroup;
+			children = (
+				B26E49DE1A3CB2EE0064105C /* CGFloat+Extensions.swift */,
+				B26E49DF1A3CB2EE0064105C /* CGPoint+Extensions.swift */,
+				B26E49E01A3CB2EE0064105C /* CGVector+Extensions.swift */,
+				B26E49E11A3CB2EE0064105C /* Int+Extensions.swift */,
+				B26E49E21A3CB2EE0064105C /* SKAction+Extensions.swift */,
+				B26E49E31A3CB2EE0064105C /* SKAction+SpecialEffects.swift */,
+				B26E49E41A3CB2EE0064105C /* SKColor+Extensions.swift */,
+				B26E49E51A3CB2EE0064105C /* SKNode+Extensions.swift */,
+				B26E49E61A3CB2EE0064105C /* SKTAudio.swift */,
+				B26E49E71A3CB2EE0064105C /* SKTEffects.swift */,
+				B26E49E81A3CB2EE0064105C /* SKTTimingFunctions.swift */,
+				B26E49E91A3CB2EE0064105C /* Vector3.swift */,
+			);
+			path = SKTUtils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B26E499B1A3C9D4D0064105C /* Minnion Maze */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B26E49BF1A3C9D4D0064105C /* Build configuration list for PBXNativeTarget "Minnion Maze" */;
+			buildPhases = (
+				B26E49981A3C9D4D0064105C /* Sources */,
+				B26E49991A3C9D4D0064105C /* Frameworks */,
+				B26E499A1A3C9D4D0064105C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Minnion Maze";
+			productName = "Minnion Maze";
+			productReference = B26E499C1A3C9D4D0064105C /* Minnion Maze.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B26E49B41A3C9D4D0064105C /* Minnion MazeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B26E49C21A3C9D4D0064105C /* Build configuration list for PBXNativeTarget "Minnion MazeTests" */;
+			buildPhases = (
+				B26E49B11A3C9D4D0064105C /* Sources */,
+				B26E49B21A3C9D4D0064105C /* Frameworks */,
+				B26E49B31A3C9D4D0064105C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B26E49B71A3C9D4D0064105C /* PBXTargetDependency */,
+			);
+			name = "Minnion MazeTests";
+			productName = "Minnion MazeTests";
+			productReference = B26E49B51A3C9D4D0064105C /* Minnion MazeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B26E49941A3C9D4D0064105C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "Timothy Barnard";
+				TargetAttributes = {
+					B26E499B1A3C9D4D0064105C = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					B26E49B41A3C9D4D0064105C = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = B26E499B1A3C9D4D0064105C;
+					};
+				};
+			};
+			buildConfigurationList = B26E49971A3C9D4D0064105C /* Build configuration list for PBXProject "Minnion Maze" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B26E49931A3C9D4D0064105C;
+			productRefGroup = B26E499D1A3C9D4D0064105C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B26E499B1A3C9D4D0064105C /* Minnion Maze */,
+				B26E49B41A3C9D4D0064105C /* Minnion MazeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B26E499A1A3C9D4D0064105C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B26E49B01A3C9D4D0064105C /* LaunchScreen.xib in Resources */,
+				B26E4A141A3CD4BE0064105C /* base@2x.png in Resources */,
+				B26E49A41A3C9D4D0064105C /* GameScene.sks in Resources */,
+				B26E49AB1A3C9D4D0064105C /* Main.storyboard in Resources */,
+				B26E4A161A3CD4BE0064105C /* knob@2x.png in Resources */,
+				B26E49D91A3CB0340064105C /* characters.atlas in Resources */,
+				B26E49DB1A3CB0340064105C /* scenery.atlas in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B26E49B31A3C9D4D0064105C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B26E49DA1A3CB0340064105C /* characters.atlas in Resources */,
+				B26E4A151A3CD4BE0064105C /* base@2x.png in Resources */,
+				B26E4A171A3CD4BE0064105C /* knob@2x.png in Resources */,
+				B26E49DC1A3CB0340064105C /* scenery.atlas in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B26E49981A3C9D4D0064105C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B26E49EC1A3CB2EE0064105C /* CGPoint+Extensions.swift in Sources */,
+				B26E49FC1A3CB2EE0064105C /* SKTEffects.swift in Sources */,
+				B26E49F21A3CB2EE0064105C /* SKAction+Extensions.swift in Sources */,
+				B26E49A61A3C9D4D0064105C /* GameScene.swift in Sources */,
+				B26E49F81A3CB2EE0064105C /* SKNode+Extensions.swift in Sources */,
+				B26E49A81A3C9D4D0064105C /* GameViewController.swift in Sources */,
+				B26E49FE1A3CB2EE0064105C /* SKTTimingFunctions.swift in Sources */,
+				B26E49F41A3CB2EE0064105C /* SKAction+SpecialEffects.swift in Sources */,
+				B26E4A101A3CD3420064105C /* AnalogControl.swift in Sources */,
+				B26E49F01A3CB2EE0064105C /* Int+Extensions.swift in Sources */,
+				B26E4A001A3CB2EE0064105C /* Vector3.swift in Sources */,
+				B26E49C61A3C9EBF0064105C /* TileMapLayer.swift in Sources */,
+				B26E49F61A3CB2EE0064105C /* SKColor+Extensions.swift in Sources */,
+				B26E49EE1A3CB2EE0064105C /* CGVector+Extensions.swift in Sources */,
+				B26E49D41A3CAD350064105C /* Player.swift in Sources */,
+				B26E49FA1A3CB2EE0064105C /* SKTAudio.swift in Sources */,
+				B26E4A031A3CB5080064105C /* Types.swift in Sources */,
+				B26E49EA1A3CB2EE0064105C /* CGFloat+Extensions.swift in Sources */,
+				B26E49A21A3C9D4D0064105C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B26E49B11A3C9D4D0064105C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B26E49F51A3CB2EE0064105C /* SKAction+SpecialEffects.swift in Sources */,
+				B26E4A111A3CD3420064105C /* AnalogControl.swift in Sources */,
+				B26E49FD1A3CB2EE0064105C /* SKTEffects.swift in Sources */,
+				B26E49EF1A3CB2EE0064105C /* CGVector+Extensions.swift in Sources */,
+				B26E4A041A3CB5080064105C /* Types.swift in Sources */,
+				B26E49D51A3CAD350064105C /* Player.swift in Sources */,
+				B26E49F31A3CB2EE0064105C /* SKAction+Extensions.swift in Sources */,
+				B26E49F71A3CB2EE0064105C /* SKColor+Extensions.swift in Sources */,
+				B26E4A011A3CB2EE0064105C /* Vector3.swift in Sources */,
+				B26E49FB1A3CB2EE0064105C /* SKTAudio.swift in Sources */,
+				B26E49EB1A3CB2EE0064105C /* CGFloat+Extensions.swift in Sources */,
+				B26E49F11A3CB2EE0064105C /* Int+Extensions.swift in Sources */,
+				B26E49FF1A3CB2EE0064105C /* SKTTimingFunctions.swift in Sources */,
+				B26E49F91A3CB2EE0064105C /* SKNode+Extensions.swift in Sources */,
+				B26E49ED1A3CB2EE0064105C /* CGPoint+Extensions.swift in Sources */,
+				B26E49BC1A3C9D4D0064105C /* Minnion_MazeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B26E49B71A3C9D4D0064105C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B26E499B1A3C9D4D0064105C /* Minnion Maze */;
+			targetProxy = B26E49B61A3C9D4D0064105C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B26E49A91A3C9D4D0064105C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B26E49AA1A3C9D4D0064105C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B26E49AE1A3C9D4D0064105C /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B26E49AF1A3C9D4D0064105C /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B26E49BD1A3C9D4D0064105C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B26E49BE1A3C9D4D0064105C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B26E49C01A3C9D4D0064105C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Minnion Maze/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B26E49C11A3C9D4D0064105C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Minnion Maze/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B26E49C31A3C9D4D0064105C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Minnion MazeTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Minnion Maze.app/Minnion Maze";
+			};
+			name = Debug;
+		};
+		B26E49C41A3C9D4D0064105C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Minnion MazeTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Minnion Maze.app/Minnion Maze";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B26E49971A3C9D4D0064105C /* Build configuration list for PBXProject "Minnion Maze" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B26E49BD1A3C9D4D0064105C /* Debug */,
+				B26E49BE1A3C9D4D0064105C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B26E49BF1A3C9D4D0064105C /* Build configuration list for PBXNativeTarget "Minnion Maze" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B26E49C01A3C9D4D0064105C /* Debug */,
+				B26E49C11A3C9D4D0064105C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B26E49C21A3C9D4D0064105C /* Build configuration list for PBXNativeTarget "Minnion MazeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B26E49C31A3C9D4D0064105C /* Debug */,
+				B26E49C41A3C9D4D0064105C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B26E49941A3C9D4D0064105C /* Project object */;
+}
