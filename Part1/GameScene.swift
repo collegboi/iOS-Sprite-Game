@@ -7,25 +7,16 @@
 //
 
 import SpriteKit
-import CoreMotion
 
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SKScene, AnalogControlPositionChange {
 
-    //single instance of CMMotionManager to ger reliable data
-    let motionManager: CMMotionManager = CMMotionManager()
-    
     var worldNode: SKNode!
     var backGroundLayer: TileMapLayer!
     var player: Player!
+    var maxSpeed = 6
     
-    var maxSpeed = 0.05
-    let steerDeadZone = CGFloat(0.15)
-    
-    let ay = Vector3(x: 0.63, y: 0.0, z: -0.92)
-    let az = Vector3(x: 0.0, y: 1.0, z: 0.0)
-    let ax = Vector3.crossProduct(Vector3(x: 0.0, y: 1.0, z: 0.0),
-        right: Vector3(x: 0.63, y: 0.0, z: -0.92)).normalized()
+    var analogControl: AnalogControl!
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
@@ -37,10 +28,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func didMoveToView(view: SKView) {
-        
-        motionManager.accelerometerUpdateInterval = 0.05
-        motionManager.startAccelerometerUpdates()
-        userInteractionEnabled = true //enable to receiver taps on screen
         createWorld()
         createPlayer()
         centerViewOn(player.position)
@@ -48,75 +35,43 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
 
     
+    func analogControlPositionChanged(analogControl: AnalogControl, position: CGPoint)  {
+        
+        var velocity = CGVector(
+            dx: position.x * CGFloat(maxSpeed),
+            dy: -position.y * CGFloat(maxSpeed))
+
+        player.moveSprite(velocity)
+
+        
+        if position != CGPointZero {
+               // player.sprite.zRotation = CGPointMake(position.x, -position.y).angle
+        }
+        //centerViewOn(player.position)
+        centerViewOn(position)
+    }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let touch = touches.anyObject() as UITouch
+        centerViewOn(touch.locationInNode(worldNode))
         player.actionJumpSprite()
-        //centerViewOn(touch.locationInNode(worldNode))
     }
     
    
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        worldNode.runAction(
-            SKAction.screenZoomWithNode(worldNode,
-                amount: CGPoint(x: 0.6, y: 0.6),
-                oscillations: 1, duration:5)
-        )
-    }
-    
-    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        //centerViewOn(player.position)
-       movePlayerWithAccerlerometer()
     }
     
-
-    func movePlayerWithAccerlerometer() {
-    
-        var accel2D = CGPoint.zeroPoint
-    
-        if motionManager.accelerometerData == nil {
-            println("no acceleration data yet")
-            return
-        }
-    
-        var raw = Vector3(
-            x: CGFloat(motionManager.accelerometerData.acceleration.x),
-            y: CGFloat(motionManager.accelerometerData.acceleration.y),
-            z: CGFloat(motionManager.accelerometerData.acceleration.z))
-        //raw = lowPassWithVector(raw)
-    
-        accel2D.x = Vector3.dotProduct(raw, right: az)
-        accel2D.y = Vector3.dotProduct(raw, right: ax)
-        accel2D.normalize()
-    
-        if abs(accel2D.x) < steerDeadZone {
-            accel2D.x = 0
-        }
-    
-        if abs(accel2D.y) < steerDeadZone {
-            accel2D.y = 0
-        }
-    
-        let maxAccelerationPerSecond = maxSpeed
-        
-        var velocity = CGVector(
-            dx: accel2D.x * CGFloat(maxAccelerationPerSecond),
-            dy: accel2D.y * CGFloat(maxAccelerationPerSecond))
-        
-         player.moveSprite(velocity)
-    }
     
     override func didSimulatePhysics() {
         let target = getCenterPointWithTarget(player.position)
         worldNode.position += (target - worldNode.position) * 0.1
-        centerViewOn(player.position)
     }
     
     
     func centerViewOn(centerOn: CGPoint) {
-        worldNode.position = getCenterPointWithTarget(centerOn)
+        var playerPositin = getCenterPointWithTarget(centerOn)
+        worldNode.position = playerPositin
     }
 
     func getCenterPointWithTarget(target: CGPoint) -> CGPoint {
@@ -151,14 +106,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 "x======oooooooooooooooooooooooox",
                 "x==============xooooooooooooooox",
                 "x==============xooooooooooooooox",
-                "xxxxxxxxxooooooxooooooooooooooox",
-                "xooooooooooooooxooooooooooooooox",
-                "xooooooooooooooxooooooooooooooox",
-                "xooooobooooboxooooooooooooooooox",
-                "xoboxxxoooxxxxoooooooooooooooox",
-                "xoooxoooooooooooooooooooooooooox",
-                "xoooxoooooooooooooooooooooooooox",
-                "xoooxxxxxxxxxxxxxxxxxxxxxxxxxxx"])
+                "x==============xooooooooooooooox",
+                "x==========xxxxxooooooooooooooox",
+                "xxxxxxxxxxxxooooooooooooooooooox",
+                "xoooooooooooooooooooooooooooooox",
+                "xoooooooooooooooooooooooooooooox",
+                "xoooooooooooooooooooooooooooooox",
+                "xoooooooooooooooooooooooooooooox",
+                "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"])
         
     }
     
@@ -175,7 +130,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 -backGroundLayer.layerSize.height / 2)
         
         
-     let bounds = SKNode()
+        let bounds = SKNode()
         bounds.physicsBody = SKPhysicsBody(edgeLoopFromRect:
             CGRect(x: 0, y: 0,
                 width: backGroundLayer.layerSize.width,
@@ -192,24 +147,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player = Player()
         player.setScale(1)
         player.zPosition = 50
-        player.position = CGPoint(x: 50, y: 50)
+        player.position = CGPoint(x: 300, y: 50)
         worldNode.addChild(player)
     }
-    
-     func didBeginContact(contact: SKPhysicsContact) {
-        println("init contact")
-        let other = (contact.bodyA.categoryBitMask == PhysicsCategory.Player ? contact.bodyB : contact.bodyA)
-        
-        switch other.categoryBitMask {
-        case PhysicsCategory.Banana :
-            let getPoint = other.node as Banana
-            getPoint.getBanana()
-            
-        default:
-            break;
-        }
-        
-    }
-    
     
 }

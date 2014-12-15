@@ -11,6 +11,7 @@ import SpriteKit
 class Player : SKNode {
     
     let sprite: SKSpriteNode
+
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
@@ -31,28 +32,52 @@ class Player : SKNode {
         
         //
         var minDiam = min(sprite.size.width, sprite.size.height)
-        minDiam = max(minDiam-16.0, 4.0)
-        let physicsBody = SKPhysicsBody(circleOfRadius: minDiam/2.0)
+        minDiam = max(minDiam - 20.0, 10.0)
+        let physicsBody = SKPhysicsBody(circleOfRadius: minDiam / 8.0 )
+        //let physicsBody = SKPhysicsBody(rectangleOfSize: sprite.size)
         //
         physicsBody.usesPreciseCollisionDetection = true
         //
         physicsBody.allowsRotation = false
-        physicsBody.restitution = 1
+        physicsBody.restitution = 0
         physicsBody.friction = 0
         physicsBody.linearDamping = 0
-        //
+        physicsBody.categoryBitMask = PhysicsCategory.Player
+        physicsBody.contactTestBitMask = PhysicsCategory.All
+        physicsBody.collisionBitMask = PhysicsCategory.Boundary | PhysicsCategory.Wall
+        
         self.physicsBody = physicsBody
     }
     
     
     
     func moveSprite(velocity: CGVector) {
+        //sprite.position.x += velocity.dx
+        //sprite.position.y += velocity.dy
+       // physicsBody?.velocity = CGVector(dx: velocity.dx, dy: velocity.dy)
+        physicsBody?.applyImpulse(velocity)
+    }
+    
+    func moveToward(target: CGPoint) {
+        let targetVector = (target - position).normalized() * 300.0
+        physicsBody?.velocity = CGVector(point: targetVector)
+    }
         
-        println(velocity.dx)
-        println(velocity.dy)
-        sprite.position.x += velocity.dx
-        sprite.position.y += velocity.dy
+    func actionJumpSprite() {
+        
+        let actionJump1 = SKAction.scaleTo(1.2, duration: 0.2)
+        let actionJump2 = SKAction.scaleTo(1, duration: 0.2)
+        
+        let wait = SKAction.waitForDuration(0.25)
+        
+        let sequence = SKAction.sequence([actionJump1, actionJump2])
+        
+        sprite.runAction(sequence)
+        
         
     }
-}
+    
+    
+    
 
+}
