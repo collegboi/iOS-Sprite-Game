@@ -19,8 +19,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var backGroundLayer: TileMapLayer!
     var player: Player!
     
+    var gamePlay: Bool = false
+    
     var maxSpeed = 0.05
     let steerDeadZone = CGFloat(0.15)
+    
+    var timerLabel : SKLabelNode!
+    var winLabel : SKLabelNode!
+    
+    var timeStart: NSTimeInterval!
+    var timeLimit: NSTimeInterval = 3.00
+    var timeDuration: NSTimeInterval!
     
     let ay = Vector3(x: 0.63, y: 0.0, z: -0.92)
     let az = Vector3(x: 0.0, y: 1.0, z: 0.0)
@@ -43,6 +52,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         userInteractionEnabled = true //enable to receiver taps on screen
         createWorld()
         createPlayer()
+        createHUD()
         centerViewOn(player.position)
     }
     
@@ -51,13 +61,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let touch = touches.anyObject() as UITouch
-        player.actionJumpSprite()
+        
+        if gamePlay {
+            player.actionJumpSprite()
+        } else {
+            winLabel.hidden = true
+            gamePlay = true
+        }
+        
         //centerViewOn(touch.locationInNode(worldNode))
     }
     
    
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        worldNode.runAction(
+       worldNode.runAction(
             SKAction.screenZoomWithNode(worldNode,
                 amount: CGPoint(x: 0.6, y: 0.6),
                 oscillations: 1, duration:5)
@@ -68,7 +85,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         //centerViewOn(player.position)
-       movePlayerWithAccerlerometer()
+        
+        if gamePlay {
+            timeDuration = currentTime - timeLimit
+            movePlayerWithAccerlerometer()
+        }
     }
     
 
@@ -136,30 +157,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return TileMapLayer(atlasName: "scenery",
             tileSize: CGSize(width: 32, height: 32),
             tileCodes: [
-                "xooooooooooooooooowwwwwwwwwwwwwx",
-                "xoooooooooooooooooowwwwwwwwwwwwx",
-                "oooooooooooooooooowwwwwwwwwwwwwx",
-                "xoooooooooooooooooooowwwwwwwwwwx",
-                "xoooooooooooooooooooowwwwwwwwwwx",
-                "xooooooooooooooooooooowwwwwwwwwx",
-                "xooooooooooooooooooooowwwwwwwwwx",
-                "xoooooooooooooooooooooowwwwwwwwx",
-                "xoooooooooooooooooooooooowwwwwwx",
-                "x======oooooooooooooooooooowwwwx",
-                "x======oooooooooooooooooooooooox",
-                "x======oooooooooooooooooooooooox",
-                "x======oooooooooooooooooooooooox",
-                "x==============xooooooooooooooox",
-                "x==============xooooooooooooooox",
-                "xxxxxxxxxooooooxooooooooooooooox",
-                "xooooooooooooooxooooooooooooooox",
-                "xooooooooooooooxooooooooooooooox",
-                "xooooobooooboxooooooooooooooooox",
-                "xoboxxxoooxxxxoooooooooooooooox",
+                "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "xooooooooooooooooooooooooooooxxx",
+                "xoooboooooooooooooooooooooboooox",
+                "xoooooooooooxooooooooxooooooooox",
+                "xoooooooooooxooobooooxooooboooxx",
+                "xoooooxxxxxxbooooooooxooooooooox",
+                "xoobooooooooxooooooooxooooooooox",
+                "xooxxooooooxooooooooooooooooooxx",
+                "xoooooxooooxxxxxxxxxxooooxxxxoox",
+                "xoooooxoooooooooooooxoooooooooox",
+                "xxooooxooooooowwooooxoooooooooox",
+                "xxxxxxxooooooowwooooxoooooobooox",
+                "xxxxxxxxxxxxxxxxxxxxooooooooooox",
+                "xoooooobooooooooooooooooooooooox",
+                "xooxooooooooooxoooooooxoooooooxx",
+                "xobxooxxxooooooxooooooxoooooooox",
+                "xooooooooooooxoxooooooxxxxxoboox",
+                "xxxxxxxxxxxooxoxooooooxoooooooox",
+                "xooooobooooboxooooooooooobooooox",
+                "xoboxxxoooxxxxoooooxxoooooooooox",
                 "xoooxoooooooooooooooooooooooooox",
-                "xoooxoooooooooooooooooooooooooox",
-                "xoooxxxxxxxxxxxxxxxxxxxxxxxxxxx"])
-        
+                "xoooxoooooobooooooooooooboooooox",
+                "xoooxxxxxxxxxxxxxxxxxxxxxxxxxxxx"])
     }
     
     func createWorld() {
@@ -173,18 +193,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         worldNode.position =
             CGPointMake(-backGroundLayer.layerSize.width / 2,
                 -backGroundLayer.layerSize.height / 2)
+
         
+        let bounds = SKNode()
+            bounds.physicsBody = SKPhysicsBody(edgeLoopFromRect:
+                CGRect(x: 0, y: 0,
+                    width: backGroundLayer.layerSize.width,
+                    height: backGroundLayer.layerSize.height))
+            bounds.physicsBody!.categoryBitMask = PhysicsCategory.Boundary
+            bounds.physicsBody!.friction = 0
+            worldNode.addChild(bounds)
         
-     let bounds = SKNode()
-        bounds.physicsBody = SKPhysicsBody(edgeLoopFromRect:
-            CGRect(x: 0, y: 0,
-                width: backGroundLayer.layerSize.width,
-                height: backGroundLayer.layerSize.height))
-        bounds.physicsBody!.categoryBitMask = PhysicsCategory.Boundary
-        bounds.physicsBody!.friction = 0
-        worldNode.addChild(bounds)
-        
-        self.physicsWorld.gravity = CGVector.zeroVector
+            self.physicsWorld.gravity = CGVector.zeroVector
+            physicsWorld.contactDelegate = self
     }
     
     func createPlayer() {
@@ -196,20 +217,52 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         worldNode.addChild(player)
     }
     
+    func createHUD() {
+        timerLabel = SKLabelNode(fontNamed: "Chalkduster")
+        timerLabel.text = "Time Left"
+        timerLabel.fontSize = 18
+        timerLabel.horizontalAlignmentMode = .Left
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            // different placement on iPad
+            timerLabel.position = CGPoint(x: 200, y: size.height / 2 - 60)
+        } else {
+            timerLabel.position = CGPoint(x: 0, y: size.height / 2 - 30)
+        }
+        timerLabel.zPosition = 100
+        addChild(timerLabel)
+        
+        
+        winLabel = SKLabelNode(fontNamed: "Chalkduster")
+        winLabel.text = "TAP TO PLAY"
+        winLabel.fontSize = 40
+        winLabel.fontColor = SKColor.whiteColor()
+        winLabel.horizontalAlignmentMode = .Center
+        winLabel.position = CGPointMake(50, 30)
+        winLabel.zPosition = 100
+        addChild(winLabel)
+
+    }
+    
      func didBeginContact(contact: SKPhysicsContact) {
-        println("init contact")
         let other = (contact.bodyA.categoryBitMask == PhysicsCategory.Player ? contact.bodyB : contact.bodyA)
         
         switch other.categoryBitMask {
         case PhysicsCategory.Banana :
             let getPoint = other.node as Banana
             getPoint.getBanana()
-            
+        case PhysicsCategory.Water :
+            win()
         default:
             break;
         }
         
     }
     
-    
+    func win() {
+        gamePlay = false
+        timerLabel.removeFromParent()
+        winLabel.text = "TAP TO PLAY"
+        winLabel.hidden = false
+
+    }
 }

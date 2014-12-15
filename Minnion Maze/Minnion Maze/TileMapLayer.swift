@@ -57,11 +57,19 @@ class TileMapLayer: SKNode {
                 tile = SKSpriteNode(texture: atlas!.textureNamed("grass1"))
             case "w":
                 tile = SKSpriteNode(texture: atlas!.textureNamed("water1"))
+            
+                if let w = tile as? SKSpriteNode {
+                    w.physicsBody = SKPhysicsBody(rectangleOfSize: w.size)
+                    w.physicsBody!.categoryBitMask = PhysicsCategory.Water
+                    w.physicsBody!.collisionBitMask = PhysicsCategory.None
+                    w.physicsBody!.contactTestBitMask = PhysicsCategory.Player
+
+            }
             case "=":
                 tile = SKSpriteNode(texture: atlas!.textureNamed("grass2"))
             case "b":
-                tile = Banana(banana1: atlas!.textureNamed("banana2"),
-                    ground: atlas!.textureNamed("grass1"))
+                tile = Banana(bananaTexture: atlas!.textureNamed("banana2"),
+                    groundTexture: atlas!.textureNamed("grass2"))
             
         default:
             println("Unknown tile code \(tileCode)")

@@ -32,7 +32,7 @@ class Player : SKNode {
         
         //
         var minDiam = min(sprite.size.width, sprite.size.height)
-        minDiam = max(minDiam - 20.0, 10.0)
+        minDiam = max(minDiam - 4.0, 1.0)
         let physicsBody = SKPhysicsBody(circleOfRadius: minDiam / 8.0 )
         //let physicsBody = SKPhysicsBody(rectangleOfSize: sprite.size)
         //

@@ -6,38 +6,50 @@
 //  Copyright (c) 2014 Timothy Barnard. All rights reserved.
 //
 
+
 import SpriteKit
 
 class Banana : SKNode {
     
-    let sprite : SKSpriteNode
-    let ground : SKTexture
+    let sprite: SKSpriteNode
+    let groundTexture: SKTexture
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
     }
     
-    
-    init(banana1: SKTexture, ground: SKTexture) {
-        
-        self.ground = ground
-        sprite = SKSpriteNode(texture: banana1)
+    init(bananaTexture: SKTexture, groundTexture: SKTexture) {
+        sprite = SKSpriteNode(texture: bananaTexture)
+        self.groundTexture = groundTexture
         super.init()
         
         addChild(sprite)
         
-        physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: sprite.size.width * 0.6, height: sprite.size.height * 0.6))
+        physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: sprite.size.width * 0.8, height: sprite.size.height * 0.8))
         physicsBody!.categoryBitMask = PhysicsCategory.Banana
         physicsBody!.collisionBitMask = PhysicsCategory.None
         physicsBody!.contactTestBitMask = PhysicsCategory.Player
-        
     }
     
     func getBanana() {
-        println("contact")
         physicsBody = nil
-        sprite.texture = ground
-        sprite.size = ground.size()
+        sprite.texture = groundTexture
+        sprite.size = groundTexture.size()
+        getPoint()
     }
     
+    func getPoint() {
+        
+        let pointsLabel: SKLabelNode = SKLabelNode(fontNamed: "AvenirNext-Regular")
+        pointsLabel.text = "1"
+        pointsLabel.fontSize = 40
+        pointsLabel.fontColor = SKColor.whiteColor()
+        pointsLabel.position = sprite.position
+        
+       // addChild(pointsLabel)
+        
+        //let pointSequence = SKAction.sequence([SKAction.fadeOutWithDuration(2), SKAction.scaleTo(2, duration: 1), SKAction.removeFromParent()])
+        
+        //runAction(pointSequence)
+    }
 }

@@ -38,7 +38,6 @@ class GameViewController: UIViewController {
             scene.scaleMode = .ResizeFill
             skView.presentScene(scene)
             skView.showsPhysics = true
-        
     }
     
     
