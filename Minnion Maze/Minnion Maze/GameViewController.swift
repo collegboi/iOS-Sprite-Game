@@ -29,17 +29,39 @@ extension SKNode {
 class GameViewController: UIViewController {
     
     override func viewDidLoad() {
+        
             super.viewDidLoad()
-            let scene = GameScene(size: view.bounds.size)
+            let scene = StartScreen(size: view.bounds.size)
             let skView = view as SKView
-            skView.showsFPS = true
-            skView.showsNodeCount = true
+            skView.showsFPS = false
+            skView.showsNodeCount = false
             skView.ignoresSiblingOrder = true
             scene.scaleMode = .ResizeFill
             skView.presentScene(scene)
-            skView.showsPhysics = true
     }
     
+    
+    func gameOverWithWin(didWin: Bool) {
+        
+        let alert = UIAlertController(title: didWin ? "You won!": "You lost", message: "Game Over", preferredStyle: .Alert)
+        presentViewController(alert, animated: true, completion: nil)
+        
+        let delayInSeconds = 3.0
+        let popTime = dispatch_time(DISPATCH_TIME_NOW,
+            Int64(delayInSeconds) * Int64(NSEC_PER_SEC))
+        
+        dispatch_after(popTime, dispatch_get_main_queue(),  {
+            self.goBack(alert)
+        })
+        
+    }
+    
+    func goBack(alert: UIAlertController) {
+        alert.dismissViewControllerAnimated(true, completion: {
+            self.navigationController!.popToRootViewControllerAnimated(false)
+            return
+        })
+    }
     
     override func shouldAutorotate() -> Bool {
         return true

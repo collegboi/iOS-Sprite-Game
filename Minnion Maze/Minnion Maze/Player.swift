@@ -19,7 +19,7 @@ class Player : SKNode {
     
     override init() {
         let atlas = SKTextureAtlas(named: "characters")
-        let texture = atlas.textureNamed("Minnion_1")
+        let texture = atlas.textureNamed("minnion_1")
         texture.filteringMode = .Nearest
         
         sprite = SKSpriteNode(texture: texture)
@@ -73,7 +73,6 @@ class Player : SKNode {
         let sequence = SKAction.sequence([actionJump1, actionJump2])
         
         sprite.runAction(sequence)
-        
         
     }
     

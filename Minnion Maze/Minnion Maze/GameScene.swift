@@ -19,13 +19,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var backGroundLayer: TileMapLayer!
     var player: Player!
     
-    var gamePlay: Bool = false
+    var gameViewControl = GameViewController?()
     
     var maxSpeed = 0.05
     let steerDeadZone = CGFloat(0.15)
     
     var timerLabel : SKLabelNode!
-    var winLabel : SKLabelNode!
+    
+    var points: Int = 0
+    var win: Bool!
     
     var timeStart: NSTimeInterval!
     var timeLimit: NSTimeInterval = 3.00
@@ -46,7 +48,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func didMoveToView(view: SKView) {
-        
         motionManager.accelerometerUpdateInterval = 0.05
         motionManager.startAccelerometerUpdates()
         userInteractionEnabled = true //enable to receiver taps on screen
@@ -54,6 +55,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         createPlayer()
         createHUD()
         centerViewOn(player.position)
+        runAction(SKAction.playSoundFileNamed("minnion_background.mp3", waitForCompletion: false))
     }
     
 
@@ -61,17 +63,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let touch = touches.anyObject() as UITouch
-        
-        if gamePlay {
             player.actionJumpSprite()
-        } else {
-            winLabel.hidden = true
-            gamePlay = true
-        }
-        
         //centerViewOn(touch.locationInNode(worldNode))
     }
-    
+
    
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
        worldNode.runAction(
@@ -85,11 +80,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         //centerViewOn(player.position)
-        
-        if gamePlay {
             timeDuration = currentTime - timeLimit
             movePlayerWithAccerlerometer()
-        }
     }
     
 
@@ -160,24 +152,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 "xooooooooooooooooooooooooooooxxx",
                 "xoooboooooooooooooooooooooboooox",
-                "xoooooooooooxooooooooxooooooooox",
-                "xoooooooooooxooobooooxooooboooxx",
-                "xoooooxxxxxxbooooooooxooooooooox",
+                "xoooooooooooxxxoxxoooxooooooooox",
+                "xoooooooooooxoooboooooooooboooxx",
+                "xoooooxxxxxxboooooooooooooooooox",
                 "xoobooooooooxooooooooxooooooooox",
-                "xooxxooooooxooooooooooooooooooxx",
-                "xoooooxooooxxxxxxxxxxooooxxxxoox",
-                "xoooooxoooooooooooooxoooooooooox",
+                "xooxoooooooxoooooooooxooooooooxx",
+                "xoooooxooooxxxxxxxxxxooooxxxxoxx",
+                "xoobooxoooooooooooooxoooooooooox",
                 "xxooooxooooooowwooooxoooooooooox",
-                "xxxxxxxooooooowwooooxoooooobooox",
+                "xxxxxxxooooooowwooooxoxxxxooboox",
                 "xxxxxxxxxxxxxxxxxxxxooooooooooox",
-                "xoooooobooooooooooooooooooooooox",
-                "xooxooooooooooxoooooooxoooooooxx",
+                "xoooooobooooooooooxoooooooooooox",
+                "xooxooooooooooxooooxxxxoooooooxx",
                 "xobxooxxxooooooxooooooxoooooooox",
                 "xooooooooooooxoxooooooxxxxxoboox",
-                "xxxxxxxxxxxooxoxooooooxoooooooox",
+                "xxxxxxxxxxxooxoxxxooooxoooooooox",
                 "xooooobooooboxooooooooooobooooox",
                 "xoboxxxoooxxxxoooooxxoooooooooox",
-                "xoooxoooooooooooooooooooooooooox",
+                "xoooxoooboooooooooooooooooooooox",
                 "xoooxoooooobooooooooooooboooooox",
                 "xoooxxxxxxxxxxxxxxxxxxxxxxxxxxxx"])
     }
@@ -219,7 +211,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createHUD() {
         timerLabel = SKLabelNode(fontNamed: "Chalkduster")
-        timerLabel.text = "Time Left"
+        timerLabel.text = "Points: \(points)"
         timerLabel.fontSize = 18
         timerLabel.horizontalAlignmentMode = .Left
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
@@ -230,16 +222,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         timerLabel.zPosition = 100
         addChild(timerLabel)
-        
-        
-        winLabel = SKLabelNode(fontNamed: "Chalkduster")
-        winLabel.text = "TAP TO PLAY"
-        winLabel.fontSize = 40
-        winLabel.fontColor = SKColor.whiteColor()
-        winLabel.horizontalAlignmentMode = .Center
-        winLabel.position = CGPointMake(50, 30)
-        winLabel.zPosition = 100
-        addChild(winLabel)
 
     }
     
@@ -250,19 +232,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case PhysicsCategory.Banana :
             let getPoint = other.node as Banana
             getPoint.getBanana()
+            increasePoint(1)
         case PhysicsCategory.Water :
-            win()
+            checkWin()
         default:
             break;
         }
         
     }
     
-    func win() {
-        gamePlay = false
+    func checkWin() {
         timerLabel.removeFromParent()
-        winLabel.text = "TAP TO PLAY"
-        winLabel.hidden = false
-
+        
+        if points > 5 {
+            win = true
+            gameOverScreen(win)
+        } else {
+            win = false
+            gameOverScreen(win)
+        }
+    }
+    
+    func gameOverScreen(score: Bool) {
+        //backgroundMusicPlayer.stop()
+        let gameOverScene = GameOver(size: size, won: win, score: points)
+        gameOverScene.scaleMode = scaleMode
+        let reveal = SKTransition.flipHorizontalWithDuration(0.5)
+        view?.presentScene(gameOverScene, transition: reveal)
+    }
+    
+    func increasePoint(increment: Int) {
+        points += increment
+        timerLabel.text = "Score: \(points)"
     }
 }
