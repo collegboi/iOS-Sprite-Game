@@ -55,7 +55,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         createPlayer()
         createHUD()
         centerViewOn(player.position)
-        runAction(SKAction.playSoundFileNamed("minnion_background.mp3", waitForCompletion: false))
+        //runAction(SKAction.playSoundFileNamed("minnion_background.mp3", waitForCompletion: false))
     }
     
 
@@ -146,32 +146,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createScenery() -> TileMapLayer {
         
-        return TileMapLayer(atlasName: "scenery",
-            tileSize: CGSize(width: 32, height: 32),
-            tileCodes: [
-                "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                "xooooooooooooooooooooooooooooxxx",
-                "xoooboooooooooooooooooooooboooox",
-                "xoooooooooooxxxoxxoooxooooooooox",
-                "xoooooooooooxoooboooooooooboooxx",
-                "xoooooxxxxxxboooooooooooooooooox",
-                "xoobooooooooxooooooooxooooooooox",
-                "xooxoooooooxoooooooooxooooooooxx",
-                "xoooooxooooxxxxxxxxxxooooxxxxoxx",
-                "xoobooxoooooooooooooxoooooooooox",
-                "xxooooxooooooowwooooxoooooooooox",
-                "xxxxxxxooooooowwooooxoxxxxooboox",
-                "xxxxxxxxxxxxxxxxxxxxooooooooooox",
-                "xoooooobooooooooooxoooooooooooox",
-                "xooxooooooooooxooooxxxxoooooooxx",
-                "xobxooxxxooooooxooooooxoooooooox",
-                "xooooooooooooxoxooooooxxxxxoboox",
-                "xxxxxxxxxxxooxoxxxooooxoooooooox",
-                "xooooobooooboxooooooooooobooooox",
-                "xoboxxxoooxxxxoooooxxoooooooooox",
-                "xoooxoooboooooooooooooooooooooox",
-                "xoooxoooooobooooooooooooboooooox",
-                "xoooxxxxxxxxxxxxxxxxxxxxxxxxxxxx"])
+        var num = arc4random_uniform(4) + 1
+        
+        switch num {
+        case 1:
+            return TileMapLayer(atlasName: "scenery",
+                tileSize: CGSize(width: 32, height: 32),
+                tileCodes: map1 )
+
+        case 2:
+            return TileMapLayer(atlasName: "scenery",
+                tileSize: CGSize(width: 32, height: 32),
+                tileCodes: map2 )
+        case 3:
+            return TileMapLayer(atlasName: "scenery",
+                tileSize: CGSize(width: 32, height: 32),
+                tileCodes: map3 )
+        case 4:
+            return TileMapLayer(atlasName: "scenery",
+                tileSize: CGSize(width: 32, height: 32),
+                tileCodes: map4 )
+
+            
+        default:
+            return TileMapLayer(atlasName: "scenery",
+                tileSize: CGSize(width: 32, height: 32),
+                tileCodes: map4 )
+
+
+        }
     }
     
     func createWorld() {

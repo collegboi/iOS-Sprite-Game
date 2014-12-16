@@ -55,6 +55,7 @@
 		B29594ED1A3E968C00F89919 /* characters.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B29594EC1A3E968C00F89919 /* characters.atlas */; };
 		B29594EE1A3E968C00F89919 /* characters.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B29594EC1A3E968C00F89919 /* characters.atlas */; };
 		B29594F01A3E9A4500F89919 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B29594EF1A3E9A4500F89919 /* Images.xcassets */; };
+		B2A159F71A407CB90035A431 /* MapGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A159F61A407CB90035A431 /* MapGenerator.swift */; };
 		B2BF22711A3EF0A600F496D9 /* minnion_background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2BF22701A3EF0A600F496D9 /* minnion_background.mp3 */; };
 		B2BF22721A3EF0A600F496D9 /* minnion_background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2BF22701A3EF0A600F496D9 /* minnion_background.mp3 */; };
 /* End PBXBuildFile section */
@@ -105,6 +106,7 @@
 		B29555481A3DF1E600444C35 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
 		B29594EC1A3E968C00F89919 /* characters.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = characters.atlas; sourceTree = "<group>"; };
 		B29594EF1A3E9A4500F89919 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B2A159F61A407CB90035A431 /* MapGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapGenerator.swift; sourceTree = "<group>"; };
 		B2BF22701A3EF0A600F496D9 /* minnion_background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = minnion_background.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +153,7 @@
 				B2BF226F1A3EF05500F496D9 /* Sound */,
 				B26E49D31A3CAD350064105C /* Player.swift */,
 				B26E4A021A3CB5080064105C /* Types.swift */,
+				B2A159F61A407CB90035A431 /* MapGenerator.swift */,
 				B26E49C51A3C9EBF0064105C /* TileMapLayer.swift */,
 				B26E49A11A3C9D4D0064105C /* AppDelegate.swift */,
 				B26E49A51A3C9D4D0064105C /* GameScene.swift */,
@@ -355,6 +358,7 @@
 				B26E49D41A3CAD350064105C /* Player.swift in Sources */,
 				B2249D661A3E5F860021E977 /* Banana.swift in Sources */,
 				B29555571A3DF1E600444C35 /* SKNode+Extensions.swift in Sources */,
+				B2A159F71A407CB90035A431 /* MapGenerator.swift in Sources */,
 				B29555511A3DF1E600444C35 /* SKAction+Extensions.swift in Sources */,
 				B29555531A3DF1E600444C35 /* SKAction+SpecialEffects.swift in Sources */,
 				B26E4A031A3CB5080064105C /* Types.swift in Sources */,
