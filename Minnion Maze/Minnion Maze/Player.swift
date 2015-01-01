@@ -11,6 +11,12 @@ import SpriteKit
 class Player : SKNode {
     
     let sprite: SKSpriteNode
+    var velocity: CGVector!
+    
+    let textureBk: SKTexture!
+    let textureFd: SKTexture!
+    let textureLt: SKTexture!
+    let textureRt: SKTexture!
 
     
     required init?(coder aDecoder: NSCoder) {
@@ -18,12 +24,19 @@ class Player : SKNode {
     }
     
     override init() {
+        
         let atlas = SKTextureAtlas(named: "characters")
-        let texture = atlas.textureNamed("minnion_1")
-        texture.filteringMode = .Nearest
+        textureBk = atlas.textureNamed("minnion_back")
+        textureFd = atlas.textureNamed("minnion_front")
+        textureLt = atlas.textureNamed("minnion_left")
+        textureRt = atlas.textureNamed("minnion_right")
+        textureFd.filteringMode = .Nearest
+        textureBk.filteringMode = .Nearest
+        textureRt.filteringMode = .Nearest
+        textureLt.filteringMode = .Nearest
         
-        sprite = SKSpriteNode(texture: texture)
-        
+        sprite = SKSpriteNode(texture: textureBk)
+        //self.velocity = CGVector(angle: 0)
         super.init()
         
         addChild(sprite)
@@ -52,17 +65,11 @@ class Player : SKNode {
     
     
     func moveSprite(velocity: CGVector) {
-        //sprite.position.x += velocity.dx
-        //sprite.position.y += velocity.dy
-       // physicsBody?.velocity = CGVector(dx: velocity.dx, dy: velocity.dy)
         physicsBody?.applyImpulse(velocity)
+        self.velocity = velocity
+        playerDirection()
     }
     
-    func moveToward(target: CGPoint) {
-        let targetVector = (target - position).normalized() * 300.0
-        physicsBody?.velocity = CGVector(point: targetVector)
-    }
-        
     func actionJumpSprite() {
         
         let actionJump1 = SKAction.scaleTo(1.2, duration: 0.2)
@@ -74,6 +81,24 @@ class Player : SKNode {
         
         sprite.runAction(sequence)
         
+    }
+    
+    func playerDirection() {
+        
+        let direction = physicsBody!.velocity
+        if abs(direction.dy) > abs(direction.dx) {
+            if direction.dy < 0 {
+                sprite.texture = textureFd
+            } else {
+                sprite.texture = textureBk
+            }
+        } else {
+            if direction.dx  > 0 {
+              sprite.texture = textureRt
+            } else {
+                sprite.texture = textureLt
+            }
+        }//if statement to see if sprite is moving direciton
     }
     
     

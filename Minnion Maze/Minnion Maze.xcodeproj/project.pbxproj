@@ -52,12 +52,15 @@
 		B295555E1A3DF1E600444C35 /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29555471A3DF1E600444C35 /* SKTTimingFunctions.swift */; };
 		B295555F1A3DF1E600444C35 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29555481A3DF1E600444C35 /* Vector3.swift */; };
 		B29555601A3DF1E600444C35 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29555481A3DF1E600444C35 /* Vector3.swift */; };
-		B29594ED1A3E968C00F89919 /* characters.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B29594EC1A3E968C00F89919 /* characters.atlas */; };
-		B29594EE1A3E968C00F89919 /* characters.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B29594EC1A3E968C00F89919 /* characters.atlas */; };
 		B29594F01A3E9A4500F89919 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B29594EF1A3E9A4500F89919 /* Images.xcassets */; };
 		B2A159F71A407CB90035A431 /* MapGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A159F61A407CB90035A431 /* MapGenerator.swift */; };
 		B2BF22711A3EF0A600F496D9 /* minnion_background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2BF22701A3EF0A600F496D9 /* minnion_background.mp3 */; };
 		B2BF22721A3EF0A600F496D9 /* minnion_background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2BF22701A3EF0A600F496D9 /* minnion_background.mp3 */; };
+		B2DFA2501A425D6B000FE131 /* Level.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2DFA24F1A425D6B000FE131 /* Level.plist */; };
+		B2F7C3661A47426700BD7FB6 /* characters.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B2F7C3651A47426700BD7FB6 /* characters.atlas */; };
+		B2F7C3681A47684100BD7FB6 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2F7C3671A47684100BD7FB6 /* Launch Screen.xib */; };
+		B2F7C36A1A4768F900BD7FB6 /* LoadScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = B2F7C3691A4768F900BD7FB6 /* LoadScreen.png */; };
+		B2F7C36C1A47698F00BD7FB6 /* MazeGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F7C36B1A47698F00BD7FB6 /* MazeGen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,10 +107,14 @@
 		B29555461A3DF1E600444C35 /* SKTEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTEffects.swift; sourceTree = "<group>"; };
 		B29555471A3DF1E600444C35 /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
 		B29555481A3DF1E600444C35 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
-		B29594EC1A3E968C00F89919 /* characters.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = characters.atlas; sourceTree = "<group>"; };
 		B29594EF1A3E9A4500F89919 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B2A159F61A407CB90035A431 /* MapGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapGenerator.swift; sourceTree = "<group>"; };
 		B2BF22701A3EF0A600F496D9 /* minnion_background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = minnion_background.mp3; sourceTree = "<group>"; };
+		B2DFA24F1A425D6B000FE131 /* Level.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level.plist; sourceTree = "<group>"; };
+		B2F7C3651A47426700BD7FB6 /* characters.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = characters.atlas; path = ../characters.atlas; sourceTree = "<group>"; };
+		B2F7C3671A47684100BD7FB6 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		B2F7C3691A4768F900BD7FB6 /* LoadScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadScreen.png; sourceTree = "<group>"; };
+		B2F7C36B1A47698F00BD7FB6 /* MazeGen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeGen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,10 +164,12 @@
 				B26E49C51A3C9EBF0064105C /* TileMapLayer.swift */,
 				B26E49A11A3C9D4D0064105C /* AppDelegate.swift */,
 				B26E49A51A3C9D4D0064105C /* GameScene.swift */,
+				B2F7C36B1A47698F00BD7FB6 /* MazeGen.swift */,
 				B288E4FB1A3F84D8003E20A7 /* GameOver.swift */,
 				B288E4FD1A3F851C003E20A7 /* StartScreen.swift */,
 				B2249D651A3E5F860021E977 /* Banana.swift */,
 				B26E49A71A3C9D4D0064105C /* GameViewController.swift */,
+				B2F7C3671A47684100BD7FB6 /* Launch Screen.xib */,
 				B26E49A91A3C9D4D0064105C /* Main.storyboard */,
 				B26E49AE1A3C9D4D0064105C /* LaunchScreen.xib */,
 				B26E499F1A3C9D4D0064105C /* Supporting Files */,
@@ -173,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				B26E49A01A3C9D4D0064105C /* Info.plist */,
+				B2DFA24F1A425D6B000FE131 /* Level.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -198,12 +208,13 @@
 		B26E49D61A3CAF680064105C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B2F7C3691A4768F900BD7FB6 /* LoadScreen.png */,
 				B288E50D1A3FBD94003E20A7 /* startScreenBckgd.png */,
 				B288E50B1A3FB9C2003E20A7 /* start.png */,
 				B288E5071A3FB8E9003E20A7 /* youLoseMinnion.png */,
 				B288E5081A3FB8E9003E20A7 /* youWinMinnion.png */,
 				B29594EF1A3E9A4500F89919 /* Images.xcassets */,
-				B29594EC1A3E968C00F89919 /* characters.atlas */,
+				B2F7C3651A47426700BD7FB6 /* characters.atlas */,
 				B26E49D81A3CB0340064105C /* scenery.atlas */,
 			);
 			name = Images;
@@ -285,6 +296,7 @@
 				TargetAttributes = {
 					B26E499B1A3C9D4D0064105C = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = N9HC9H544M;
 					};
 					B26E49B41A3C9D4D0064105C = {
 						CreatedOnToolsVersion = 6.2;
@@ -317,9 +329,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B26E49B01A3C9D4D0064105C /* LaunchScreen.xib in Resources */,
-				B29594ED1A3E968C00F89919 /* characters.atlas in Resources */,
 				B288E50C1A3FB9C2003E20A7 /* start.png in Resources */,
+				B2DFA2501A425D6B000FE131 /* Level.plist in Resources */,
+				B2F7C3661A47426700BD7FB6 /* characters.atlas in Resources */,
 				B29594F01A3E9A4500F89919 /* Images.xcassets in Resources */,
+				B2F7C36A1A4768F900BD7FB6 /* LoadScreen.png in Resources */,
+				B2F7C3681A47684100BD7FB6 /* Launch Screen.xib in Resources */,
 				B2BF22711A3EF0A600F496D9 /* minnion_background.mp3 in Resources */,
 				B26E49AB1A3C9D4D0064105C /* Main.storyboard in Resources */,
 				B288E5091A3FB8E9003E20A7 /* youLoseMinnion.png in Resources */,
@@ -335,7 +350,6 @@
 				B288E50E1A3FBD94003E20A7 /* startScreenBckgd.png in Resources */,
 				B2BF22721A3EF0A600F496D9 /* minnion_background.mp3 in Resources */,
 				B26E49DC1A3CB0340064105C /* scenery.atlas in Resources */,
-				B29594EE1A3E968C00F89919 /* characters.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +376,7 @@
 				B29555511A3DF1E600444C35 /* SKAction+Extensions.swift in Sources */,
 				B29555531A3DF1E600444C35 /* SKAction+SpecialEffects.swift in Sources */,
 				B26E4A031A3CB5080064105C /* Types.swift in Sources */,
+				B2F7C36C1A47698F00BD7FB6 /* MazeGen.swift in Sources */,
 				B26E49A21A3C9D4D0064105C /* AppDelegate.swift in Sources */,
 				B295555B1A3DF1E600444C35 /* SKTEffects.swift in Sources */,
 				B288E4FE1A3F851C003E20A7 /* StartScreen.swift in Sources */,
@@ -508,10 +523,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Minnion Maze/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -521,10 +539,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Minnion Maze/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

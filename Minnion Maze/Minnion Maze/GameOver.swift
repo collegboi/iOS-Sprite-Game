@@ -12,11 +12,11 @@ import SpriteKit
 class GameOver: SKScene {
 
     var won: Bool
-    var score: Int
+    var level: Int
     
-    init(size: CGSize, won: Bool, score: Int) {
+    init(size: CGSize, won: Bool, level: Int) {
+        self.level = level
         self.won = won
-        self.score = score
         super.init(size: size)
     }
     
@@ -34,13 +34,19 @@ class GameOver: SKScene {
             winLooseImage = SKSpriteNode(imageNamed: "youWinMinnion")
         } else {
             winLooseImage = SKSpriteNode(imageNamed: "youLoseMinnion")
+            self.level = 4
         }
         
         winLooseImage.position = CGPointMake(self.frame.width / 2, self.frame.size.height / 2)
         self.addChild(winLooseImage)
         
         var scoreBoard = SKLabelNode(fontNamed: "Chalkduster")
-        scoreBoard.text = "Your Score: " + String(score)
+        if self.level == 4 {
+            //scoreBoard.text = "Your Score: " + String(score)
+        } else {
+            //scoreBoard.text = "Your Score: " + String(score)
+        }
+        
         scoreBoard.position = CGPointMake(self.frame.width / 2, winLooseImage.position.y - 100)
         scoreBoard.horizontalAlignmentMode = .Center
         scoreBoard.fontColor = SKColor.blueColor()
@@ -53,10 +59,20 @@ class GameOver: SKScene {
         
         let wait = SKAction.waitForDuration(5.0)
         let block = SKAction.runBlock {
-            let myScene = StartScreen(size: self.size)
-            myScene.scaleMode = self.scaleMode
-            let reveal = SKTransition.flipHorizontalWithDuration(0.5)
-            self.view?.presentScene(myScene, transition: reveal)
+            
+            if self.level == 4 {
+                let myScene = StartScreen(size: self.size)
+                myScene.scaleMode = self.scaleMode
+                let reveal = SKTransition.flipHorizontalWithDuration(0.5)
+                self.view?.presentScene(myScene, transition: reveal)
+            } else {
+                let myScene = GameScene(size: self.size, levelCounter: self.level)
+                myScene.scaleMode = self.scaleMode
+                let reveal = SKTransition.flipHorizontalWithDuration(0.5)
+                self.view?.presentScene(myScene, transition: reveal)
+            }
+            
+
         }
         self.runAction(SKAction.sequence([wait, block]))
     }

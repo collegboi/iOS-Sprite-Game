@@ -12,7 +12,8 @@ import SpriteKit
 class StartScreen: SKScene {
     
     let startButton: SKSpriteNode = SKSpriteNode(imageNamed: "start")
-    
+    var level: Int = 0
+    var score: Int = 0
     
     override func didMoveToView(view: SKView) {
         
@@ -28,7 +29,7 @@ class StartScreen: SKScene {
     
     func sceneTapped() {
         
-        let myScene = GameScene(size:self.size)
+        let myScene = GameScene(size:self.size, levelCounter: level)
         myScene.scaleMode = scaleMode
         let reveal = SKTransition.doorwayWithDuration(1.5)
         self.view?.presentScene(myScene, transition: reveal)

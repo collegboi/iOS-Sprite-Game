@@ -18,20 +18,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var worldNode: SKNode!
     var backGroundLayer: TileMapLayer!
     var player: Player!
-    
     var gameViewControl = GameViewController?()
+    var mapGen = GameMaze(width: 32, height: 32)
     
-    var maxSpeed = 0.05
+    var maxSpeed = 0.1
     let steerDeadZone = CGFloat(0.15)
     
     var timerLabel : SKLabelNode!
     
     var points: Int = 0
     var win: Bool!
+    var levelCounter: Int
     
-    var timeStart: NSTimeInterval!
-    var timeLimit: NSTimeInterval = 3.00
-    var timeDuration: NSTimeInterval!
+    var timeStart = 0.0
+    var timeLimit = 60
+    var timeDuration  = 0.0
+    var timeInSeconds = 0
+    
+    var maps = [String]()
     
     let ay = Vector3(x: 0.63, y: 0.0, z: -0.92)
     let az = Vector3(x: 0.0, y: 1.0, z: 0.0)
@@ -42,19 +46,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fatalError("NSCoding not supported")
     }
     
-    override init(size: CGSize) {
+    init(size: CGSize, levelCounter: Int) {
+        self.levelCounter = levelCounter
         super.init(size: size)
     }
     
-    
+
     override func didMoveToView(view: SKView) {
-        motionManager.accelerometerUpdateInterval = 0.05
-        motionManager.startAccelerometerUpdates()
+        maps = self.mapGen.generateMaze()
         userInteractionEnabled = true //enable to receiver taps on screen
         createWorld()
         createPlayer()
         createHUD()
         centerViewOn(player.position)
+        //println(maps)
         //runAction(SKAction.playSoundFileNamed("minnion_background.mp3", waitForCompletion: false))
     }
     
@@ -69,19 +74,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
    
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-       worldNode.runAction(
-            SKAction.screenZoomWithNode(worldNode,
-                amount: CGPoint(x: 0.6, y: 0.6),
-                oscillations: 1, duration:5)
-        )
     }
     
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         //centerViewOn(player.position)
-            timeDuration = currentTime - timeLimit
-            movePlayerWithAccerlerometer()
+        
+        if timeStart == 0.0 {
+            timeStart = currentTime
+        }
+        timeDuration = currentTime - timeStart
+        
+        timeInSeconds = Int(timeDuration) % 60
+        timeInSeconds = timeLimit - timeInSeconds
+        self.timerLabel.text = "Time Remaining: \(timeInSeconds)"
+        
+        checkWin()
+        //functipn to move player
+        movePlayerWithAccerlerometer()
     }
     
 
@@ -146,43 +157,48 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createScenery() -> TileMapLayer {
         
-        var num = arc4random_uniform(4) + 1
+        levelCounter++
         
-        switch num {
+        var ranNum = Int(arc4random_uniform(4) + 1)
+        
+        switch ranNum {
         case 1:
-            return TileMapLayer(atlasName: "scenery",
-                tileSize: CGSize(width: 32, height: 32),
-                tileCodes: map1 )
-
+            return TileMapLayer(atlasName: "scenery", tileSize: CGSize(width: 32, height: 32), tileCodes: map1)
         case 2:
-            return TileMapLayer(atlasName: "scenery",
-                tileSize: CGSize(width: 32, height: 32),
-                tileCodes: map2 )
+            return TileMapLayer(atlasName: "scenery", tileSize: CGSize(width: 32, height: 32), tileCodes: map2)
         case 3:
-            return TileMapLayer(atlasName: "scenery",
-                tileSize: CGSize(width: 32, height: 32),
-                tileCodes: map3 )
+            return TileMapLayer(atlasName: "scenery", tileSize: CGSize(width: 32, height: 32), tileCodes: map3)
         case 4:
-            return TileMapLayer(atlasName: "scenery",
-                tileSize: CGSize(width: 32, height: 32),
-                tileCodes: map4 )
-
-            
+            return TileMapLayer(atlasName: "scenery", tileSize: CGSize(width: 32, height: 32), tileCodes: map4)
+        case 5:
+            return TileMapLayer(atlasName: "scenery", tileSize: CGSize(width: 32, height: 32), tileCodes: map2)
         default:
-            return TileMapLayer(atlasName: "scenery",
-                tileSize: CGSize(width: 32, height: 32),
-                tileCodes: map4 )
-
-
+            return TileMapLayer(atlasName: "scenery", tileSize: CGSize(width: 32, height: 32), tileCodes: map1)
         }
     }
     
+    func createBackground(){
+        
+    }
+    
     func createWorld() {
+        
+        motionManager.accelerometerUpdateInterval = 0.05
+        motionManager.startAccelerometerUpdates()
+        
         backGroundLayer = createScenery()
         
         worldNode = SKNode()
         worldNode.addChild(backGroundLayer)
         addChild(worldNode!)
+        
+        var levelLabel = SKLabelNode(fontNamed: "Chalkduster")
+        levelLabel.text = "Level: \(levelCounter)"
+        levelLabel.position = CGPointMake(self.frame.width / 2, self.frame.height / 2)
+        levelLabel.horizontalAlignmentMode = .Center
+        levelLabel.fontColor = SKColor.whiteColor()
+        levelLabel.fontSize = 40
+        worldNode.addChild(levelLabel)
         
         anchorPoint = CGPointMake(0.5, 0.5)
         worldNode.position =
@@ -201,6 +217,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
             self.physicsWorld.gravity = CGVector.zeroVector
             physicsWorld.contactDelegate = self
+        
+        
+        //action for level
+        
+        let levelZoom = SKAction.scaleBy(1.2, duration: 0.5)
+        let levelDisap = SKAction.fadeOutWithDuration(0.5)
+        let actionLevel = SKAction.sequence([levelZoom, levelDisap])
+        levelLabel.runAction(actionLevel)
     }
     
     func createPlayer() {
@@ -213,10 +237,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func createHUD() {
+        
         timerLabel = SKLabelNode(fontNamed: "Chalkduster")
-        timerLabel.text = "Points: \(points)"
         timerLabel.fontSize = 18
         timerLabel.horizontalAlignmentMode = .Left
+        timerLabel.text = "Time: \(timeLimit)"
+        
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             // different placement on iPad
             timerLabel.position = CGPoint(x: 200, y: size.height / 2 - 60)
@@ -235,9 +261,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case PhysicsCategory.Banana :
             let getPoint = other.node as Banana
             getPoint.getBanana()
-            increasePoint(1)
+            increaseSeconds(5)
         case PhysicsCategory.Water :
-            checkWin()
+            win = true
+            gameOverScreen(win)
         default:
             break;
         }
@@ -245,12 +272,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func checkWin() {
-        timerLabel.removeFromParent()
-        
-        if points > 5 {
-            win = true
-            gameOverScreen(win)
-        } else {
+       // timerLabel.removeFromParent()
+        if self.timeInSeconds == 0 {
+            timeInSeconds = 0
             win = false
             gameOverScreen(win)
         }
@@ -258,14 +282,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func gameOverScreen(score: Bool) {
         //backgroundMusicPlayer.stop()
-        let gameOverScene = GameOver(size: size, won: win, score: points)
+        let gameOverScene = GameOver(size: size, won: win, level: levelCounter)
         gameOverScene.scaleMode = scaleMode
         let reveal = SKTransition.flipHorizontalWithDuration(0.5)
         view?.presentScene(gameOverScene, transition: reveal)
     }
     
-    func increasePoint(increment: Int) {
-        points += increment
-        timerLabel.text = "Score: \(points)"
+    func increaseSeconds(increment: Int) {
+        timeLimit += increment
     }
 }
