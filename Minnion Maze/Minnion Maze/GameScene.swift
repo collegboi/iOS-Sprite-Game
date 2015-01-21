@@ -27,11 +27,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var timerLabel : SKLabelNode!
     
     var points: Int = 0
-    var win: Bool!
+    var win = true
     var levelCounter: Int
     
     var timeStart = 0.0
-    var timeLimit = 60
+    var timeLimit = 30
     var timeDuration  = 0.0
     var timeInSeconds = 0
     
@@ -59,7 +59,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         createPlayer()
         createHUD()
         centerViewOn(player.position)
-        //println(maps)
         //runAction(SKAction.playSoundFileNamed("minnion_background.mp3", waitForCompletion: false))
     }
     
@@ -92,7 +91,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         checkWin()
         //functipn to move player
-        movePlayerWithAccerlerometer()
+        if (win) {
+            movePlayerWithAccerlerometer()
+        }
     }
     
 
@@ -175,10 +176,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         default:
             return TileMapLayer(atlasName: "scenery", tileSize: CGSize(width: 32, height: 32), tileCodes: map1)
         }
-    }
-    
-    func createBackground(){
-        
     }
     
     func createWorld() {
@@ -272,10 +269,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func checkWin() {
-       // timerLabel.removeFromParent()
         if self.timeInSeconds == 0 {
+            timerLabel.removeFromParent()
             timeInSeconds = 0
             win = false
+            player.playerLoose(win)
+            //motionManager.stopAccelerometerUpdates()
             gameOverScreen(win)
         }
     }

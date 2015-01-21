@@ -18,8 +18,6 @@
 		B26E49C61A3C9EBF0064105C /* TileMapLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49C51A3C9EBF0064105C /* TileMapLayer.swift */; };
 		B26E49D41A3CAD350064105C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49D31A3CAD350064105C /* Player.swift */; };
 		B26E49D51A3CAD350064105C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E49D31A3CAD350064105C /* Player.swift */; };
-		B26E49DB1A3CB0340064105C /* scenery.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B26E49D81A3CB0340064105C /* scenery.atlas */; };
-		B26E49DC1A3CB0340064105C /* scenery.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B26E49D81A3CB0340064105C /* scenery.atlas */; };
 		B26E4A031A3CB5080064105C /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E4A021A3CB5080064105C /* Types.swift */; };
 		B26E4A041A3CB5080064105C /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E4A021A3CB5080064105C /* Types.swift */; };
 		B288E4FC1A3F84D8003E20A7 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B288E4FB1A3F84D8003E20A7 /* GameOver.swift */; };
@@ -57,7 +55,8 @@
 		B2BF22711A3EF0A600F496D9 /* minnion_background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2BF22701A3EF0A600F496D9 /* minnion_background.mp3 */; };
 		B2BF22721A3EF0A600F496D9 /* minnion_background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2BF22701A3EF0A600F496D9 /* minnion_background.mp3 */; };
 		B2DFA2501A425D6B000FE131 /* Level.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2DFA24F1A425D6B000FE131 /* Level.plist */; };
-		B2F7C3661A47426700BD7FB6 /* characters.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B2F7C3651A47426700BD7FB6 /* characters.atlas */; };
+		B2E101971A70186600EEC175 /* scenery.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B2E101961A70186600EEC175 /* scenery.atlas */; };
+		B2EDF4D11A700BCF00246771 /* characters.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B2EDF4D01A700BCF00246771 /* characters.atlas */; };
 		B2F7C3681A47684100BD7FB6 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2F7C3671A47684100BD7FB6 /* Launch Screen.xib */; };
 		B2F7C36A1A4768F900BD7FB6 /* LoadScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = B2F7C3691A4768F900BD7FB6 /* LoadScreen.png */; };
 		B2F7C36C1A47698F00BD7FB6 /* MazeGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F7C36B1A47698F00BD7FB6 /* MazeGen.swift */; };
@@ -87,7 +86,6 @@
 		B26E49BB1A3C9D4D0064105C /* Minnion_MazeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Minnion_MazeTests.swift; sourceTree = "<group>"; };
 		B26E49C51A3C9EBF0064105C /* TileMapLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileMapLayer.swift; sourceTree = "<group>"; };
 		B26E49D31A3CAD350064105C /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		B26E49D81A3CB0340064105C /* scenery.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = scenery.atlas; path = ../scenery.atlas; sourceTree = "<group>"; };
 		B26E4A021A3CB5080064105C /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		B288E4FB1A3F84D8003E20A7 /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		B288E4FD1A3F851C003E20A7 /* StartScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartScreen.swift; path = ../StartScreen.swift; sourceTree = "<group>"; };
@@ -111,7 +109,8 @@
 		B2A159F61A407CB90035A431 /* MapGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapGenerator.swift; sourceTree = "<group>"; };
 		B2BF22701A3EF0A600F496D9 /* minnion_background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = minnion_background.mp3; sourceTree = "<group>"; };
 		B2DFA24F1A425D6B000FE131 /* Level.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level.plist; sourceTree = "<group>"; };
-		B2F7C3651A47426700BD7FB6 /* characters.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = characters.atlas; path = ../characters.atlas; sourceTree = "<group>"; };
+		B2E101961A70186600EEC175 /* scenery.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = scenery.atlas; path = ../scenery.atlas; sourceTree = "<group>"; };
+		B2EDF4D01A700BCF00246771 /* characters.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = characters.atlas; path = ../characters.atlas; sourceTree = "<group>"; };
 		B2F7C3671A47684100BD7FB6 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		B2F7C3691A4768F900BD7FB6 /* LoadScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadScreen.png; sourceTree = "<group>"; };
 		B2F7C36B1A47698F00BD7FB6 /* MazeGen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeGen.swift; sourceTree = "<group>"; };
@@ -214,8 +213,8 @@
 				B288E5071A3FB8E9003E20A7 /* youLoseMinnion.png */,
 				B288E5081A3FB8E9003E20A7 /* youWinMinnion.png */,
 				B29594EF1A3E9A4500F89919 /* Images.xcassets */,
-				B2F7C3651A47426700BD7FB6 /* characters.atlas */,
-				B26E49D81A3CB0340064105C /* scenery.atlas */,
+				B2EDF4D01A700BCF00246771 /* characters.atlas */,
+				B2E101961A70186600EEC175 /* scenery.atlas */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -296,7 +295,6 @@
 				TargetAttributes = {
 					B26E499B1A3C9D4D0064105C = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = N9HC9H544M;
 					};
 					B26E49B41A3C9D4D0064105C = {
 						CreatedOnToolsVersion = 6.2;
@@ -329,16 +327,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B26E49B01A3C9D4D0064105C /* LaunchScreen.xib in Resources */,
+				B2E101971A70186600EEC175 /* scenery.atlas in Resources */,
 				B288E50C1A3FB9C2003E20A7 /* start.png in Resources */,
 				B2DFA2501A425D6B000FE131 /* Level.plist in Resources */,
-				B2F7C3661A47426700BD7FB6 /* characters.atlas in Resources */,
 				B29594F01A3E9A4500F89919 /* Images.xcassets in Resources */,
 				B2F7C36A1A4768F900BD7FB6 /* LoadScreen.png in Resources */,
 				B2F7C3681A47684100BD7FB6 /* Launch Screen.xib in Resources */,
 				B2BF22711A3EF0A600F496D9 /* minnion_background.mp3 in Resources */,
+				B2EDF4D11A700BCF00246771 /* characters.atlas in Resources */,
 				B26E49AB1A3C9D4D0064105C /* Main.storyboard in Resources */,
 				B288E5091A3FB8E9003E20A7 /* youLoseMinnion.png in Resources */,
-				B26E49DB1A3CB0340064105C /* scenery.atlas in Resources */,
 				B288E50A1A3FB8E9003E20A7 /* youWinMinnion.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,7 +347,6 @@
 			files = (
 				B288E50E1A3FBD94003E20A7 /* startScreenBckgd.png in Resources */,
 				B2BF22721A3EF0A600F496D9 /* minnion_background.mp3 in Resources */,
-				B26E49DC1A3CB0340064105C /* scenery.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,7 +523,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Minnion Maze/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -542,7 +539,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Minnion Maze/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -56,13 +56,17 @@ class TileMapLayer: SKNode {
             case "o":
                 tile = SKSpriteNode(texture: atlas!.textureNamed("grass1"))
             case "w":
-                tile = SKSpriteNode(texture: atlas!.textureNamed("water1"))
+                tile = SKSpriteNode(texture: atlas!.textureNamed("grass1"))
+                var potion = SKSpriteNode(texture: atlas!.textureNamed("potion"))
+                let scalePotion = SKAction.scaleTo(4, duration: 100)
+                potion.runAction(scalePotion)
             
                 if let w = tile as? SKSpriteNode {
                     w.physicsBody = SKPhysicsBody(rectangleOfSize: w.size)
                     w.physicsBody!.categoryBitMask = PhysicsCategory.Water
                     w.physicsBody!.collisionBitMask = PhysicsCategory.None
                     w.physicsBody!.contactTestBitMask = PhysicsCategory.Player
+                    tile?.addChild(potion)
 
             }
             case "=":

@@ -7,7 +7,7 @@
 //
 
 var map1 = ["xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            "xbxoooooooooooooooooooooooowwoox",
+            "xbxoooooooooooooooooooooooowooox",
             "xoxxxxxoxoxxxxxxxxxxxxxoxxxxxxxx",
             "xoooooxoxoxoooooxoxoooxoobxoooox",
             "xoxxxxxoxxxoxxxoxoxoxoxxxoxxxxxx",
@@ -40,7 +40,7 @@ var map1 = ["xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"]
 
 var map2 = ["xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            "xoxoooooooooooooooooooooooooooox",
+            "xoxooooooooooooooooooowoooooooox",
             "xoxoxxxxxxxxxxxxxxxxxxxxxxxoxxxx",
             "xoxoooooxoooooooxoooooooxoooxoxx",
             "xoxxxxxoxxxoxxxoxxxxxxxoxxxxxoxx",
@@ -82,8 +82,8 @@ var map3 = ["xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             "xooxoooooooxoooooooooxooooooooxx",
             "xoooooxooooxxxxxxxxxxooooxxxxoxx",
             "xoobooxoooooooooooooxoooooooooox",
-            "xxooooxooooooowwooooxoooooooooox",
-            "xxxxxxxooooooowwooooxoxxxxooboox",
+            "xxooooxoooooooooooooxoooooooooox",
+            "xxxxxxxooooooowoooooxoxxxxooboox",
             "xxxxxxxxxxxxxxxxxxxxooooooooooox",
             "xoooooobooooooooooxoooooooooooox",
             "xooxooooooooooxooooxxxxoooooooxx",
@@ -127,7 +127,7 @@ var map4 = ["xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             "xoxoooooxoooxoxoxoooxoxoooooobxx",
             "xoxxxxxoxxxoxoxoxxxxxoxxxxxxxoxx",
             "xoxoooxoooxoxoxoooooooooooxoooxx",
-            "xoxxxoxxxxxxxoxxxxxxxxxxxoxxwwxx",
+            "xoxxxoxxxxxxxoxxxxxxxxxxxoxxwxxx",
             "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"]
 
 var map5 = ["xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",

@@ -17,6 +17,7 @@ class Player : SKNode {
     let textureFd: SKTexture!
     let textureLt: SKTexture!
     let textureRt: SKTexture!
+    let textureMad: SKTexture!
 
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,10 +31,12 @@ class Player : SKNode {
         textureFd = atlas.textureNamed("minnion_front")
         textureLt = atlas.textureNamed("minnion_left")
         textureRt = atlas.textureNamed("minnion_right")
+        textureMad = atlas.textureNamed("madMinnion")
         textureFd.filteringMode = .Nearest
         textureBk.filteringMode = .Nearest
         textureRt.filteringMode = .Nearest
         textureLt.filteringMode = .Nearest
+        textureMad.filteringMode = .Nearest
         
         sprite = SKSpriteNode(texture: textureBk)
         //self.velocity = CGVector(angle: 0)
@@ -71,14 +74,10 @@ class Player : SKNode {
     }
     
     func actionJumpSprite() {
-        
         let actionJump1 = SKAction.scaleTo(1.2, duration: 0.2)
         let actionJump2 = SKAction.scaleTo(1, duration: 0.2)
-        
         let wait = SKAction.waitForDuration(0.25)
-        
         let sequence = SKAction.sequence([actionJump1, actionJump2])
-        
         sprite.runAction(sequence)
         
     }
@@ -101,6 +100,14 @@ class Player : SKNode {
         }//if statement to see if sprite is moving direciton
     }
     
+    //method to turn minnion mad due to loosing game
+    func playerLoose(score: Bool) {
+        sprite.texture = textureMad
+        let actionMad1 = SKAction.scaleTo(1.2, duration: 0.4)
+        let actionMad2 = SKAction.scaleTo(1, duration: 0.4)
+        let seqeunceMad = SKAction.sequence([actionMad1, actionMad2, actionMad1, actionMad2, actionMad1, actionMad2])
+        sprite.runAction(seqeunceMad)
+    }
     
     
 
