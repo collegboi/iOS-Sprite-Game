@@ -28,7 +28,6 @@ class StartScreen: SKScene {
     }
     
     func sceneTapped() {
-        
         let myScene = GameScene(size:self.size, levelCounter: level)
         myScene.scaleMode = scaleMode
         let reveal = SKTransition.doorwayWithDuration(1.5)

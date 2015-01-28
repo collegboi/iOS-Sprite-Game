@@ -25,7 +25,7 @@ class Player : SKNode {
     }
     
     override init() {
-        
+        //character directions with own SKTexture variables
         let atlas = SKTextureAtlas(named: "characters")
         textureBk = atlas.textureNamed("minnion_back")
         textureFd = atlas.textureNamed("minnion_front")
@@ -46,7 +46,7 @@ class Player : SKNode {
         name = "player"
         
         
-        //
+        // min diameter for the physics body around the sprite
         var minDiam = min(sprite.size.width, sprite.size.height)
         minDiam = max(minDiam - 4.0, 1.0)
         let physicsBody = SKPhysicsBody(circleOfRadius: minDiam / 8.0 )
@@ -66,22 +66,14 @@ class Player : SKNode {
     }
     
     
-    
+    //taking in velocity form acceleromter to move the sprite
     func moveSprite(velocity: CGVector) {
         physicsBody?.applyImpulse(velocity)
         self.velocity = velocity
         playerDirection()
     }
     
-    func actionJumpSprite() {
-        let actionJump1 = SKAction.scaleTo(1.2, duration: 0.2)
-        let actionJump2 = SKAction.scaleTo(1, duration: 0.2)
-        let wait = SKAction.waitForDuration(0.25)
-        let sequence = SKAction.sequence([actionJump1, actionJump2])
-        sprite.runAction(sequence)
-        
-    }
-    
+    //detects which direction sprite is moving to change sprites direciton
     func playerDirection() {
         
         let direction = physicsBody!.velocity
@@ -103,10 +95,11 @@ class Player : SKNode {
     //method to turn minnion mad due to loosing game
     func playerLoose(score: Bool) {
         sprite.texture = textureMad
-        let actionMad1 = SKAction.scaleTo(1.2, duration: 0.4)
-        let actionMad2 = SKAction.scaleTo(1, duration: 0.4)
-        let seqeunceMad = SKAction.sequence([actionMad1, actionMad2, actionMad1, actionMad2, actionMad1, actionMad2])
-        sprite.runAction(seqeunceMad)
+        let actionJump1 = SKAction.scaleTo(1.2, duration: 0.2)
+        let actionJump2 = SKAction.scaleTo(1, duration: 0.2)
+        let wait = SKAction.waitForDuration(0.25)
+        let sequence = SKAction.sequence([actionJump1, actionJump2])
+        sprite.runAction(sequence)
     }
     
     

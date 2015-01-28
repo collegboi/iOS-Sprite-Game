@@ -18,7 +18,7 @@ class TileMapLayer: SKNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not Suppoted")
     }
-    
+    //initialises with tile size and gride size
     init(tileSize: CGSize, gridSize: CGSize, layerSize: CGSize? = nil) {
             self.tileSize = tileSize
             self.gridSize = gridSize
@@ -34,7 +34,7 @@ class TileMapLayer: SKNode {
     
     
     func nodeForCode(tileCode: Character) -> SKNode? {
-        
+        //if not tile images
         if atlas == nil {
             return nil
         }
@@ -55,7 +55,7 @@ class TileMapLayer: SKNode {
             
             case "o":
                 tile = SKSpriteNode(texture: atlas!.textureNamed("grass1"))
-            case "w":
+            case "p":
                 tile = SKSpriteNode(texture: atlas!.textureNamed("grass1"))
                 var potion = SKSpriteNode(texture: atlas!.textureNamed("potion"))
                 let scalePotion = SKAction.scaleTo(4, duration: 100)
@@ -69,6 +69,10 @@ class TileMapLayer: SKNode {
                     tile?.addChild(potion)
 
             }
+            case "w":
+                tile = SKSpriteNode(texture: atlas!.textureNamed("water1"))
+            case "v":
+                tile = SKSpriteNode(texture: atlas!.textureNamed("water2"))
             case "=":
                 tile = SKSpriteNode(texture: atlas!.textureNamed("grass2"))
             case "b":
@@ -106,7 +110,7 @@ class TileMapLayer: SKNode {
         }
     }
     
-    
+    //changes position by calculating size of tile and returning next point
     func positionForRow(row: Int, col: Int) -> CGPoint {
         
         let x = CGFloat(col) * tileSize.width + tileSize.width / 2

@@ -5,7 +5,7 @@
 //  Created by Timothy Barnard on 15/12/2014.
 //  Copyright (c) 2014 Timothy Barnard. All rights reserved.
 //
-
+//banana class is used so when the banana is eaten, then it changes the tile to grass
 
 import SpriteKit
 

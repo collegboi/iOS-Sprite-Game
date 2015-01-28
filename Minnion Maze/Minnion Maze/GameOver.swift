@@ -54,12 +54,13 @@ class GameOver: SKScene {
         addChild(scoreBoard)
         
         //winLooseImage.runAction(SKAction.scaleBy(1.2, duration: 2))
+        //action to zoon in and out of game message
         var scoreAction = SKAction.sequence([SKAction.scaleBy(0.8, duration: 0.5), SKAction.scaleBy( 1.2, duration: 0.5)])
         winLooseImage.runAction(SKAction.sequence([scoreAction, scoreAction, scoreAction]))
         
         let wait = SKAction.waitForDuration(5.0)
+        //if player has played 4 levels then game over
         let block = SKAction.runBlock {
-            
             if self.level == 4 {
                 let myScene = StartScreen(size: self.size)
                 myScene.scaleMode = self.scaleMode

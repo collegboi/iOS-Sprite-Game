@@ -18,10 +18,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var worldNode: SKNode!
     var backGroundLayer: TileMapLayer!
     var player: Player!
+    var zoomMap: SKSprite!
     var gameViewControl = GameViewController?()
     var mapGen = GameMaze(width: 32, height: 32)
     
-    var maxSpeed = 0.1
+    var maxSpeed = 0.2
     let steerDeadZone = CGFloat(0.15)
     
     var timerLabel : SKLabelNode!
@@ -31,7 +32,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var levelCounter: Int
     
     var timeStart = 0.0
-    var timeLimit = 30
+    var timeLimit = 5
     var timeDuration  = 0.0
     var timeInSeconds = 0
     
@@ -51,7 +52,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         super.init(size: size)
     }
     
-
+    //few methods called when view is shown
     override func didMoveToView(view: SKView) {
         maps = self.mapGen.generateMaze()
         userInteractionEnabled = true //enable to receiver taps on screen
@@ -67,8 +68,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let touch = touches.anyObject() as UITouch
-            player.actionJumpSprite()
-        //centerViewOn(touch.locationInNode(worldNode))
     }
 
    
@@ -96,7 +95,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-
+    //method to move player
+    //takes 3d postion and what angle the phone is held at
+    //and changes it to 2d
+    //up and down motion is not needed of the 3d motion
     func movePlayerWithAccerlerometer() {
     
         var accel2D = CGPoint.zeroPoint
@@ -139,11 +141,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         centerViewOn(player.position)
     }
     
-    
+    //keeps sprite in center of screen
     func centerViewOn(centerOn: CGPoint) {
         worldNode.position = getCenterPointWithTarget(centerOn)
     }
-
+    
     func getCenterPointWithTarget(target: CGPoint) -> CGPoint {
         let x = target.x.clamped(
             size.width / 2,
@@ -160,7 +162,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         levelCounter++
         
-        var ranNum = Int(arc4random_uniform(4) + 1)
+        var ranNum = Int(arc4random_uniform(5) + 1)
         
         switch ranNum {
         case 1:
@@ -172,7 +174,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case 4:
             return TileMapLayer(atlasName: "scenery", tileSize: CGSize(width: 32, height: 32), tileCodes: map4)
         case 5:
-            return TileMapLayer(atlasName: "scenery", tileSize: CGSize(width: 32, height: 32), tileCodes: map2)
+            return TileMapLayer(atlasName: "scenery", tileSize: CGSize(width: 32, height: 32), tileCodes: map5)
+        case 6:
+            return TileMapLayer(atlasName: "scenery", tileSize: CGSize(width: 32, height: 32), tileCodes: map6)
         default:
             return TileMapLayer(atlasName: "scenery", tileSize: CGSize(width: 32, height: 32), tileCodes: map1)
         }
@@ -248,6 +252,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         timerLabel.zPosition = 100
         addChild(timerLabel)
+        
+        //powerup option
 
     }
     

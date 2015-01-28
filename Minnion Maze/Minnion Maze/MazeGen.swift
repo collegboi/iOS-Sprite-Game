@@ -4,7 +4,7 @@
 //
 //  Created by Timothy Barnard on 21/12/2014.
 //  Copyright (c) 2014 Timothy Barnard. All rights reserved.
-//
+// Not needed in game but usefull for creating mazes
 
 import SpriteKit
 import Foundation
