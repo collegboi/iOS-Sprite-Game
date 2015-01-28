@@ -18,11 +18,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var worldNode: SKNode!
     var backGroundLayer: TileMapLayer!
     var player: Player!
-    var zoomMap: SKSprite!
+    var zoomMap: SKSpriteNode!
     var gameViewControl = GameViewController?()
     var mapGen = GameMaze(width: 32, height: 32)
     
-    var maxSpeed = 0.2
+    var maxSpeed = 0.1
     let steerDeadZone = CGFloat(0.15)
     
     var timerLabel : SKLabelNode!
@@ -30,9 +30,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var points: Int = 0
     var win = true
     var levelCounter: Int
+    var help = true
     
     var timeStart = 0.0
-    var timeLimit = 5
+    var timeLimit = 30
     var timeDuration  = 0.0
     var timeInSeconds = 0
     
@@ -72,6 +73,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
    
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+        //mapZoom()
+    }
+    
+    func mapZoom() {
+        if help {
+            var scale = SKAction.scaleBy(0.6, duration: 0.1)
+            self.worldNode.runAction(scale)
+        }
+        self.help = false
+        self.zoomMap.hidden = true
+
     }
     
     
@@ -254,6 +266,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(timerLabel)
         
         //powerup option
+        zoomMap = SKSpriteNode(imageNamed: "map")
+        zoomMap.alpha = 2.0
+        zoomMap.zPosition = 50
+        zoomMap.position = CGPoint(x: -200, y: 150)
+        //addChild(zoomMap)
 
     }
     

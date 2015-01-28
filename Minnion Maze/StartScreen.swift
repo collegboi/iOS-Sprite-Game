@@ -17,7 +17,7 @@ class StartScreen: SKScene {
     
     override func didMoveToView(view: SKView) {
         
-        let background = SKSpriteNode(imageNamed:"startScreenBckgd@1x")
+        var background = SKSpriteNode(imageNamed: "startScreenBckgd")
         background.position = CGPoint(x:self.size.width/2, y:self.size.height/2)
         self.addChild(background)
         
